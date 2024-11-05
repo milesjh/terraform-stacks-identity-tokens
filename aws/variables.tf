@@ -18,5 +18,5 @@ variable "tfc_project" {
 
 variable "tfc_stack" {
   type = string
-  default = "*"
+  default = "tfstacks-vpc-eks-hashibank"
 }
