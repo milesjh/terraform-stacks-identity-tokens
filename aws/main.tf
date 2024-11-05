@@ -15,7 +15,7 @@ resource "aws_iam_openid_connect_provider" "stacks_openid_provider" {
 }
 
 resource "aws_iam_role" "stacks_role" {
-  name               = "stacks-${var.tfc_organization}-${var.tfc_project}-${var.tfc_stack}"
+  name               = "stacks-${var.tfc_organization}-${var.tfc_project}-stacks"
   assume_role_policy = data.aws_iam_policy_document.stacks_role_policy.json
 }
 
@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "stacks_role_policy" {
       # You can widen access here to an entire organization or project by
       # tweaking the value below. You can also restrict access to specific
       # deployments or operations. See the User Guide for more info.
-      values = ["organization:${var.tfc_organization}:project:${var.tfc_project}:stack:${var.tfc_stack}:*"]
+      values = ["organization:${var.tfc_organization}:project:${var.tfc_project}:stack:*:*"]
     }
   }
 }
